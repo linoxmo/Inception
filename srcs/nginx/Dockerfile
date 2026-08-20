@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM debian:trixie
 
 RUN apt update
 RUN apt -y install nginx openssl

@@ -2,7 +2,7 @@ services:
 
   nginx:
     build:
-      context: ./requirements/nginx
+      context: ./srcs/nginx
     container_name: nginx
     ports:
       - "443:443"
@@ -13,7 +13,7 @@ services:
 
   wordpress:
     build:
-      context: ./requirements/wordpress
+      context: ./srcs/WordPress
     container_name: wordpress
     env_file:
       - .env
@@ -26,7 +26,7 @@ services:
 
   mariadb:
     build:
-      context: ./requirements/mariadb
+      context: ./srcs/MariaDb
     container_name: mariadb
     env_file:
       - .env

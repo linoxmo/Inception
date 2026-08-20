@@ -1,15 +1,15 @@
-FROM debian:buster
+FROM debian:trixie
 
 RUN apt update && apt install -y \
-    php7.3 \
-    php7.3-fpm \
-    php7.3-mysql \
-    php7.3-curl \
-    php7.3-gd \
-    php7.3-intl \
-    php7.3-mbstring \
-    php7.3-xml \
-    php7.3-zip \
+    php8.4 \
+    php8.4-fpm \
+    php8.4-mysql \
+    php8.4-curl \
+    php8.4-gd \
+    php8.4-intl \
+    php8.4-mbstring \
+    php8.4-xml \
+    php8.4-zip \
     wget \
     mariadb-client \
     && rm -rf /var/lib/apt/lists/*
