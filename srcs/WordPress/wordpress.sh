@@ -16,6 +16,8 @@ if [ ! -f wp-config.php ]; then
 
     cp wp-config-sample.php wp-config.php
 
+    sed -i "/DB_HOST/a define('WP_HOME', 'https://${DOMAIN_URL}');" wp-config.php
+    sed -i "/DB_HOST/a define('WP_SITEURL', 'https://${DOMAIN_URL}');" wp-config.php
     sed -i "s/database_name_here/${MYSQL_DATABASE}/" wp-config.php
     sed -i "s/username_here/${MYSQL_USER}/" wp-config.php
     sed -i "s/password_here/${MYSQL_PASSWORD}/" wp-config.php
@@ -25,6 +27,6 @@ fi
 
 chown -R www-data:www-data /var/www/html
 
-sed -i 's|^listen = .*|listen = 9000|' /etc/php/7.3/fpm/pool.d/www.conf
+sed -i 's|^listen = .*|listen = 9000|' /etc/php/8.4/fpm/pool.d/www.conf
 
-exec php-fpm7.3 -F
+exec php-fpm8.4 -F
