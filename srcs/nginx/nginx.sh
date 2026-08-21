@@ -1,4 +1,4 @@
-#!bin/bash 
+#!/bin/bash 
 
 set -e
 
@@ -12,4 +12,4 @@ if [ ! -f /etc/nginx/ssl/nginx.crt ]; then
         -subj "/C=FR/ST=France/L=Paris/O=42/OU=Student/CN=localhost"
 fi
 
-nginx -g "daemon off;"1
+nginx -g "daemon off;"
