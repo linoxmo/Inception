@@ -1,10 +1,11 @@
 NAME = inception
-COMPOSE = sudo docker compose -f docker-compose.yaml
+COMPOSE = docker compose -f docker-compose.yaml
+TO_LOG = | tee log.txt
 
-all: up
+all: up 
 
 up:
-	$(COMPOSE) up -d --build
+	$(COMPOSE) up -d --build 2>&1 $(TO_LOG)
 
 down:
 	$(COMPOSE) down
