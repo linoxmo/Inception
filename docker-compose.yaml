@@ -4,10 +4,14 @@ services:
     build:
       context: ./srcs/nginx
     container_name: nginx
+    env_file:
+    - .env
     ports:
       - "443:443"
     depends_on:
       - wordpress
+    volumes:
+    - wordpress_data:/var/www/html
     networks:
       - inception
 
@@ -28,8 +32,11 @@ services:
     build:
       context: ./srcs/MariaDb
     container_name: mariadb
-    env_file:
-      - .env
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER+${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     volumes:
       - mariadb_data:/var/lib/mysql
     networks:

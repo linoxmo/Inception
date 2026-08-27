@@ -4,7 +4,6 @@ set -e
 
 mkdir -p /run/mysqld
 chown -R mysql:mysql /run/mysqld
-chown -R mysql:mysql /var/lib/mysql
 
 if [ ! -d "/var/lib/mysql/mysql" ]; then
 
