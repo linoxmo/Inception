@@ -2,7 +2,7 @@ NAME = inception
 
 COMPOSE = docker compose -f docker-compose.yaml
 
-DATA_DIR = /home/tmagoudi42/Downloads/Inception-main/data
+DATA_DIR = /home/tmagoudi42/data
 WP_DATA = $(DATA_DIR)/wordpress
 DB_DATA = $(DATA_DIR)/mariadb
 
@@ -33,12 +33,19 @@ logs:
 	$(COMPOSE) logs
 
 ps:
-	$(COMPOSE) ps
+	$(COMPOSE) ps -a
 
-clean:
-	$(COMPOSE) down --volumes
+clean: down
+	$(COMPOSE) down --volumes --remove-orphans
+	-docker rm -f $$(docker ps -aq --filter "name=nginx" --filter "name=wordpress" --filter "name=mariadb") 2>/dev/null
 
-fclean:
-	$(COMPOSE) down --volumes --rmi all
+fclean: clean
+	$(COMPOSE) down --volumes --rmi all --remove-orphans
+	-docker system prune -af --volumes
+	-rm -rf $(DATA_DIR)
 
-re: fclean all
+re : clean all
+
+reset: fclean all
+
+.PHONY: all up down start stop restart logs ps clean fclean re
