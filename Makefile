@@ -2,7 +2,7 @@ NAME = inception
 
 COMPOSE = docker compose -f docker-compose.yaml
 
-DATA_DIR = /home/tmagoudi42/data
+DATA_DIR = $(HOME)/data
 WP_DATA = $(DATA_DIR)/wordpress
 DB_DATA = $(DATA_DIR)/mariadb
 
