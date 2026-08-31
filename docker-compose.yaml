@@ -20,6 +20,10 @@ services:
     container_name: wordpress
     env_file:
       - .env
+    secrets:
+      - db_password
+      - wp_admin_password
+      - wp_user_password
     depends_on:
       - mariadb
     volumes:
@@ -34,8 +38,9 @@ services:
     environment:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    secrets:
+      - db_root_password
+      _ db_password
     volumes:
       - mariadb_data:/var/lib/mysql
     networks:
@@ -47,3 +52,11 @@ networks:
 volumes:
   wordpress_data:
   mariadb_data:
+
+secrets:
+  db_root_password:
+    file: ${HOME}/.secrets/db_root_password.txt
+  db_password:
+    file: ${HOME}/.secrets/db_password.txt
+  wp_admin_password:
+    file: ${HOME}/.secrets/wp_user_password.txt
