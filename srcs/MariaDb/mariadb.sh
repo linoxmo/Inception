@@ -3,6 +3,9 @@ set -e
 mkdir -p /run/mysqld
 chown -R mysql:mysql /run/mysqld
 
+MYSQL_ROOT_PASSWORD=$(cat /run/secrets/db_root_password)
+MYSQL_PASSWORD=$(cat /run/secrets/db_password)
+
 if [ ! -d "/var/lib/mysql/mysql" ]; then
     mariadb-install-db \
         --user=mysql \

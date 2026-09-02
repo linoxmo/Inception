@@ -41,5 +41,5 @@ if [ ! -f wp-config.php ]; then
 fi
 
 chown -R www-data:www-data /var/www/html
-sed -i 's|^listen = .*|listen = 9000|' /etc/php/8.4/fpm/pool.d/www.conf
-exec php-fpm8.4 -F
+sed -i 's|^listen = .*|listen = 9000|' /etc/php/8.2/fpm/pool.d/www.conf
+exec php-fpm8.2 -F

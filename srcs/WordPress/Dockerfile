@@ -1,15 +1,15 @@
-FROM debian:trixie
+FROM debian:bookworm
 
 RUN apt update && apt install -y \
-    php8.4 \
-    php8.4-fpm \
-    php8.4-mysql \
-    php8.4-curl \
-    php8.4-gd \
-    php8.4-intl \
-    php8.4-mbstring \
-    php8.4-xml \
-    php8.4-zip \
+    php8.2 \
+    php8.2-fpm \
+    php8.2-mysql \
+    php8.2-curl \
+    php8.2-gd \
+    php8.2-intl \
+    php8.2-mbstring \
+    php8.2-xml \
+    php8.2-zip \
     wget \
     mariadb-client \
     && rm -rf /var/lib/apt/lists/*

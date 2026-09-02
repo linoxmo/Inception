@@ -110,3 +110,5 @@ Import (restore):
 ```bash
 cat backup.sql | docker exec -i mariadb mariadb -u root -p"$(cat ~/.secrets/db_root_password.txt)" wordpress
 ```
+
+
