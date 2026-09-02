@@ -27,7 +27,7 @@ services:
     depends_on:
       - mariadb
     volumes:
-      - wordpress_data:$(HOME)/data/wordpress
+      - wordpress_data:${HOME}/data/wordpress
     networks:
       - inception
 
@@ -42,7 +42,7 @@ services:
       - db_root_password
       - db_password
     volumes:
-      - mariadb_data:$(HOME)/data/mariadb
+      - mariadb_data:${HOME}/data/mariadb
     networks:
       - inception
 
